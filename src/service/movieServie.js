@@ -1,9 +1,9 @@
 import axios from '../axios'
 
 class MovieService {
-  async fetchAllMovies(lng) {
+  async fetchAllMovies(en) {
     try {
-      const { data, status } = await axios.get(`discover/movie?language=${lng}`);
+      const { data, status } = await axios.get(`discover/movie?language=${en}`);
       if (status !== 200) {
         throw new Error('Failed fetching movie data');
       }
@@ -13,9 +13,9 @@ class MovieService {
     }
   }
 
-  async fetchMovieById(id, lng) {
+  async fetchMovieById(id, en) {
     try {
-      const { data, status } = await axios.get(`/movie/${id}?language=${lng}`);
+      const { data, status } = await axios.get(`/movie/${id}?language=${en}`);
       if (status !== 200) {
         throw new Error('Failed fetching movie info');
       }
@@ -30,7 +30,7 @@ class MovieService {
       const { data, status } = await axios.get('search/movie', {
         params: {
           query: movieName,
-          language: 'ru',
+          language: 'en',
         },
       });
       if (status !== 200) {
@@ -42,9 +42,9 @@ class MovieService {
     }
   }
 
-  async fetchMovieGenreList(lng) {
+  async fetchMovieGenreList(en) {
     try {
-      const { data, status } = await axios.get(`genre/movie/list?language=${lng}`);
+      const { data, status } = await axios.get(`genre/movie/list?language=${en}`);
       if (status !== 200) {
         throw new Error('Failed fetching movie genre list');
       }
@@ -54,10 +54,10 @@ class MovieService {
     }
   }
 
-  async fetchNewMovie(lng) {
+  async fetchNewMovie(en) {
     try {
       const { data, status } = await axios.get('trending/movie/week', {
-        params: { language: lng },
+        params: { language: en },
       });
       if (status !== 200) {
         throw new Error('Error fetching new movies');
@@ -68,10 +68,10 @@ class MovieService {
     }
   }
 
-  async fetchPopularMovies(lng) {
+  async fetchPopularMovies(en) {
     try {
       const { data, status } = await axios.get('movie/popular', {
-        params: { language: lng },
+        params: { language: en },
       });
       if (status !== 200) {
         throw new Error('Error fetching popular movies');
@@ -82,10 +82,10 @@ class MovieService {
     }
   }
 
-  async fetchMovieNowWatching(lng) {
+  async fetchMovieNowWatching(en) {
     try {
       const { data, status } = await axios.get('movie/now_playing', {
-        params: { language: lng },
+        params: { language: en },
       });
       if (status !== 200) {
         throw new Error('Error fetching now-watching movies');
@@ -96,10 +96,10 @@ class MovieService {
     }
   }
 
-  async fetchMovieTopRated(lng) {
+  async fetchMovieTopRated(en) {
     try {
       const { data, status } = await axios.get('movie/top_rated', {
-        params: { language: lng },
+        params: { language: en },
       });
       if (status !== 200) {
         throw new Error('Error fetching top-rated movies');
@@ -110,10 +110,10 @@ class MovieService {
     }
   }
 
-  async fetchMovieUpComing(lng) {
+  async fetchMovieUpComing(en) {
     try {
       const { data, status } = await axios.get('movie/upcoming', {
-        params: { language: lng },
+        params: { language: en },
       });
       if (status !== 200) {
         throw new Error('Error fetching upcoming movies');

@@ -1,15 +1,8 @@
-import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
 import Logo from '../../assets/logo.svg'
 import Icon from '../../assets/icon.svg'
 
 const Header = () => {
-  const { t, i18n } = useTranslation()
-
-  const changeLanguage = () => {
-    const newLang = i18n.language === 'en' ? 'ru' : 'en'
-    i18n.changeLanguage(newLang)
-  }
 
   return (
     <div className='flex justify-center'>
@@ -49,15 +42,6 @@ const Header = () => {
               />
             </div>
           </div>
-        </div>
-
-        <div className='pt-[30px]'>
-          <p
-            className='font-medium text-[19px] cursor-pointer'
-            onClick={changeLanguage}
-          >
-            {t('language')}
-          </p>
         </div>
       </div>
     </div>

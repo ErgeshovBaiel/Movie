@@ -1,38 +1,36 @@
-import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import movieService from '../../service/movieServie';
 import { useNavigate } from 'react-router-dom';
 import Star from '../../assets/star.svg';
 
 const MovieFilter = ({ searchQuery }) => {
-  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [activeBtn, setActiveBtn] = useState(null);
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const filterNames = [t('All'), t('Movies'), t('TV Shows')];
+  const filterNames = ['All', 'Movies', 'TV Shows'];
 
   useEffect(() => {
     fetchMovies(filterNames[0]);
     setActiveBtn(filterNames[0]);
-  }, [i18n.language]);
+  }, []);
 
   const fetchMovies = (item) => {
     setIsLoading(true);
 
-    if (item === t('All')) {
-      movieService.fetchNewMovie(i18n.language).then((res) => {
+    if (item === 'All') {
+      movieService.fetchNewMovie().then((res) => {
         setMovies(res.results);
         setIsLoading(false);
       });
-    } else if (item === t('Movies')) {
-      movieService.fetchPopularMovies(i18n.language).then((res) => {
+    } else if (item === 'Movies') {
+      movieService.fetchPopularMovies().then((res) => {
         setMovies(res.results);
         setIsLoading(false);
       });
-    } else if (item === t('TV Shows')) {
-      movieService.fetchMovieTopRated(i18n.language).then((res) => {
+    } else if (item === 'TV Shows') {
+      movieService.fetchMovieTopRated().then((res) => {
         setMovies(res.results);
         setIsLoading(false);
       });
@@ -48,7 +46,6 @@ const MovieFilter = ({ searchQuery }) => {
     return voteAverage.toFixed(1);
   };
 
-  // Фильтрация фильмдерди searchQuery боюнча
   const filteredMovies = movies.filter((film) =>
     film.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -61,9 +58,7 @@ const MovieFilter = ({ searchQuery }) => {
           return (
             <p
               onClick={() => handleOnClick(item)}
-              className={`cursor-pointer px-6 py-3 rounded-lg transition-all ${
-                isActive ? 'bg-[#7D5CFA] text-white' : 'text-[#A0A0A0]'
-              }`}
+              className={`cursor-pointer px-6 py-3 rounded-lg transition-all ${isActive ? 'bg-[#7D5CFA] text-white' : 'text-[#A0A0A0]'}`}
               key={index}
             >
               {item}
@@ -77,7 +72,6 @@ const MovieFilter = ({ searchQuery }) => {
           <h3 className="text-white">Loading...</h3>
         ) : (
           <div className="flex flex-wrap gap-4">
-            {/* Фильтрацияланган фильмдерди көрсөтүү */}
             {filteredMovies.map((film) => {
               const imgUrl = 'https://image.tmdb.org/t/p/original/';
               return (
@@ -89,8 +83,7 @@ const MovieFilter = ({ searchQuery }) => {
                   className="flex flex-col items-center justify-center cursor-pointer"
                 >
                   <button
-                    className="w-[60px] h-[40px] p-[4px_8px] absolute rounded-[8px]
-                     text-[#FFBD6D] bg-[#000000A6] flex items-center gap-1 mr-[195px] mb-[404px]"
+                    className="w-[60px] h-[40px] p-[4px_8px] absolute rounded-[8px] text-[#FFBD6D] bg-[#000000A6] flex items-center gap-1 mr-[195px] mb-[404px]"
                   >
                     <img src={Star} alt="" />
                     {formatVoteAverage(film.vote_average)}

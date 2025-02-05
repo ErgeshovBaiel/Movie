@@ -1,11 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import movieService from '../../service/movieServie';
 import { useNavigate } from 'react-router-dom';
 import Star from '../../assets/star.svg';
 
 const TvShowsFilter = ({ searchQuery }) => {
-  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,12 +22,12 @@ const TvShowsFilter = ({ searchQuery }) => {
 
   useEffect(() => {
     fetchMovies();
-  }, [i18n.language]);
+  }, []);
 
   const fetchMovies = () => {
     setIsLoading(true);
 
-    movieService.fetchMovieTopRated(i18n.language).then((res) => {
+    movieService.fetchMovieTopRated().then((res) => {
       setMovies(res.results);
       setIsLoading(false);
     });
@@ -39,7 +37,6 @@ const TvShowsFilter = ({ searchQuery }) => {
     return voteAverage.toFixed(1);
   };
 
-  // Фильтрацияланган фильмдер
   const filteredMovies = movies.filter((film) =>
     film.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -51,7 +48,6 @@ const TvShowsFilter = ({ searchQuery }) => {
           <h3 className="text-white">Loading...</h3>
         ) : (
           <div className="flex flex-wrap gap-4">
-            {/* Фильтрацияланган фильмдерди көрсөтүү */}
             {filteredMovies.map((film) => {
               const imgUrl = 'https://image.tmdb.org/t/p/original/';
               return (

@@ -1,23 +1,20 @@
-import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import movieService from '../../service/movieServie';
 import { useNavigate } from 'react-router-dom';
 import Star from '../../assets/star.svg';
 
 const Category = ({ searchQuery }) => {
-  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchMovies();
-  }, [i18n.language]);
+  }, []); // i18n.language dependency removed
 
   const fetchMovies = () => {
     setIsLoading(true);
-
-    movieService.fetchNewMovie(i18n.language).then((res) => {
+    movieService.fetchNewMovie().then((res) => { // i18n.language parameter removed
       setMovies(res.results);
       setIsLoading(false);
     });

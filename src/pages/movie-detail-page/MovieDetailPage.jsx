@@ -1,26 +1,23 @@
-import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import movieService from '../../service/movieServie'
-import Star from '../../assets/star.svg';
-
+import Star from '../../assets/star.svg'
 
 const MovieDetailPage = () => {
-  const { t, i18n } = useTranslation()
   const { movieId } = useParams()
   const [movie, setMovie] = useState({})
 
   useEffect(() => {
-    movieService.fetchMovieById(movieId, i18n.language).then(data => {
+    movieService.fetchMovieById(movieId).then(data => {
       console.log(data)
       setMovie(data)
     })
-  }, [movieId, i18n.language])
+  }, [movieId])
 
   if (Object.keys(movie).length === 0) {
     return (
       <div className='flex justify-center'>
-        <h1 className='text-white'>{t('Loading...')}</h1>
+        <h1 className='text-white'>Loading...</h1>
       </div>
     )
   }
@@ -42,12 +39,12 @@ const MovieDetailPage = () => {
   }
 
   const countryNames = {
-    US: t('USA'),
-    CA: t('Canada'),
-    GB: t('United Kingdom'),
-    FR: t('France'),
-    DE: t('Germany'),
-    IT: t('Italy')
+    US: 'USA',
+    CA: 'Canada',
+    GB: 'United Kingdom',
+    FR: 'France',
+    DE: 'Germany',
+    IT: 'Italy'
   }
 
   const formatCountry = countryCode => {
@@ -55,6 +52,10 @@ const MovieDetailPage = () => {
   }
 
   const imgUrl = 'https://image.tmdb.org/t/p/original/'
+
+  const formatVoteAverage = voteAverage => {
+    return voteAverage.toFixed(1)
+  }
 
   return (
     <div>
@@ -69,38 +70,73 @@ const MovieDetailPage = () => {
         ></div>
 
         <div
-          className='w-[560px] h-[144px] my-container top-[528px] left-[230px] 
-          p-10 gap-2.5 rounded-3xl bg-[#20283E] absolute'><h3 className='text-3xl font-medium  text-white font-[Montserrat] my-8 mt-[-1px]'>
-          {movie.title}
-        </h3></div>
+          className='w-[560px] h-[144px] my-container m-auto relative bottom-[70px] right-[230px] 
+          p-10 gap-2.5 rounded-3xl bg-[#20283E]'
+        >
+          <h3 className='text-3xl font-medium text-white font-[Poppins] my-4'>
+            {movie.title}
+          </h3>
+        </div>
 
-        <div className='w-[993px] mx-auto pt-[165px] pb-[105px] flex justify-between items-center'>
+        <div
+        className='w-[993px] m-auto pt-[50px] flex justify-between items-center'>
           <div>
             <img
-              className='w-[480px] h-[720px] rounded-[24px]'
+              className='w-[480px] h-[720px]   rounded-[24px]'
               src={imgUrl + movie.poster_path}
               alt={movie.title}
             />
           </div>
 
-          <div className='movie-content w-[630px] text-white mt-[70px]'>
-            
+          <div 
+          className='w-[480px] h-[688px] relative top-[400px] left-[60px] space-y-[24px]'>
 
-              <h3>{movie.tagline}</h3>
-            <p className='text-base font-medium font-[Montserrat] my-5'>
+            <h3
+              className='mt-[-400px] w-[346px] h-[32px] font-[Poppins]
+               text-[24px] font-bold leading-[32px] text-[#EBEEF5]'
+            >
+              {movie.tagline}
+            </h3>
+
+            <p 
+            className='w-[480px] h-[224px] font-[Poppins] text-[20px] font-normal leading-[32px] text-[#8E95A9]'>
               {truncateText(movie.overview)}
             </p>
-              <span>{movie.release_date}</span>
 
-              
+            <div className='pt-[20px]'>
+              <button
+                className='w-[60px] h-[40px]  p-[4px_8px] rounded-[8px]
+             text-[#FFBD6D] bg-[#000000A6] flex items-center gap-1'
+              >
+                <img src={Star} alt='' className='pb-[2px]' />
+                {formatVoteAverage(movie.vote_average)}
+              </button>
+            </div>
 
-            <h4>{movie.runtime} min</h4>
+            <div className=' pt-[20px]'>
+              <span
+                className=' mt-[50px] w-[115px] h-[32px] font-[Poppins] text-[20px]
+              font-normal leading-[32px] text-[#C3C8D4]'
+              >
+                {movie.release_date}
+              </span>
+            </div>
 
-            <div className='flex gap-5 w-[890px] text-xl font-medium font-[Montserrat] my-5'>
-              <p>{formatBudget(movie.budget)}</p>
-              <p>{formatCountry(movie.origin_country)}</p>
+            <h4 className='mt-[100px] w-[100px] h-[32px] font-[Poppins] text-[20px]  leading-[32px] font-normal text-[#C3C8D4]'>
+              {movie.runtime} min
+            </h4>
 
-              <p className='flex gap-5'>
+            <div className='pt-[20px]'>
+              <div className='flex gap-5 w-[890px] text-[20px]  leading-[32px] font-[Poppins]  font-normal my-5 text-[#C3C8D4]'>
+                <p>{formatBudget(movie.budget)}</p>
+                <p>{formatCountry(movie.origin_country)}</p>
+              </div>
+            </div>
+
+            <div  className="pt-[40px] w-[600px]">
+              <p 
+              className='flex gap-5  font-[Poppins] text-[20px] font-normal leading-[32px] text-[#C3C8D4]'>
+
                 {movie.genres.map((genre, index) => (
                   <span key={index}>
                     {genre.name}
@@ -110,9 +146,8 @@ const MovieDetailPage = () => {
               </p>
             </div>
 
-
-            <div className='flex gap-8 mt-[100px]'></div>
           </div>
+
         </div>
       </div>
     </div>

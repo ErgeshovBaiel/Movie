@@ -1,9 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import search from '../../assets/search.svg';
 
 const Search = ({ onSearch }) => {
-  const { t } = useTranslation();
   const [query, setQuery] = useState('');
 
   const handleInputChange = (e) => {
@@ -27,7 +25,7 @@ const Search = ({ onSearch }) => {
           type="text"
           value={query}
           onChange={handleInputChange}
-          placeholder={t('Search Movies or TV Shows')}
+          placeholder="Search Movies or TV Shows"
         />
       </div>
     </div>
