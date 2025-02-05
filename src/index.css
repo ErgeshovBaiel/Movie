@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+.my-container {
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(32, 40, 62, 0.8), rgba(32, 40, 62, 0.1));
+    backdrop-filter: blur(24px);
+
+}
+body {
+    font-family: "Montserrat", serif;
+    background-color: #040917ef;
+    background-image: url('./assets/Background.png');
+    background-size: cover; 
+    background-position: center; 
+}
+.custom-pagination {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
+.custom-pagination .swiper-pagination-bullet {
+    width: 3px;
+    height: 21px;
+    background-color: #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.custom-pagination .swiper-pagination-bullet-active {
+    background-color: #EF4234;
+    height: 33px;
+}
+.text-sm {
+  font-size: 0.75rem;
+}
