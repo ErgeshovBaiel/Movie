@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div className='flex justify-center'>
       <div className='app-container z-30 fixed text-white flex justify-between pt-[25px] mx-auto'>
-        <div className='flex items-center gap-[70px]'>
+        <div className='flex items-center gap-[70px] '>
           <NavLink to={'/'}>
             <img src={Logo} alt='' />
           </NavLink>
@@ -29,14 +29,17 @@ const Header = () => {
                   TV Shows
                 </NavLink>
 
-                <p className='w-[101px] h-[24px] font-[Poppins] text-base font-semibold text-[#A8AEBF] ml-[5px]'>
-                  Suggest me
-                </p>
+                <NavLink
+                to='/login'             
+                className='w-[70px] h-[24px] font-[Poppins] text-base font-semibold text-[#A8AEBF] ml-[5px]'
+                >
+                  Login
+                </NavLink>
               </div>
+
               <img
                 width={16}
                 height={16}
-                className='ml-[8px]'
                 src={Icon}
                 alt=''
               />
