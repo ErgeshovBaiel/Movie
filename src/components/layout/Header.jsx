@@ -13,7 +13,7 @@ const Header = () => {
           </NavLink>
 
           <div className='font-medium text-xl text-[#FFFFFF]'>
-            <div className='flex ml-[680px] mt-[5px]'>
+            <div className='flex ml-[730px] mt-[5px]'>
               <div className='flex gap-[40px]'>
                 <NavLink
                   to='/movies'

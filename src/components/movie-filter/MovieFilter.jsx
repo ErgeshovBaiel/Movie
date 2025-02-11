@@ -52,7 +52,7 @@ const MovieFilter = ({ searchQuery }) => {
 
   return (
     <div className="pt-[80px] pb-[160px] app-container">
-      <div className="w-[400px] flex gap-4 p-2 rounded-xl bg-[#00000033] text-white">
+      <div className="w-[330px] flex gap-4 p-2 rounded-xl bg-[#00000033] text-white">
         {filterNames.map((item, index) => {
           const isActive = item === activeBtn;
           return (
@@ -74,7 +74,7 @@ const MovieFilter = ({ searchQuery }) => {
           <div className="flex flex-wrap gap-4">
             {filteredMovies.map((film) => {
               const imgUrl = 'https://image.tmdb.org/t/p/original/';
-              return (
+              return (         
                 <div
                   key={film.id}
                   onClick={() => {

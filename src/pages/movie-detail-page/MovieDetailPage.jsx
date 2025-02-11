@@ -1,4 +1,4 @@
-import { useParams } from 'react-router'
+import { NavLink, useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import movieService from '../../service/movieServie'
 import Star from '../../assets/star.svg'
@@ -73,7 +73,21 @@ const MovieDetailPage = () => {
           className='w-[560px] h-[144px] my-container m-auto relative bottom-[70px] right-[230px] 
           p-10 gap-2.5 rounded-3xl bg-[#20283E]'
         >
-          <h3 className='text-3xl font-medium text-white font-[Poppins] my-4'>
+          <div className="flex gap-[22px]">
+          <NavLink to={'/'}>
+          <p className="w-[85px] h-[16px] text-[#BEB7FB] font-normal text-xs leading-4 font-[Poppins]">MaileHereko</p>
+          </NavLink>
+
+           <NavLink to={'/movies'}>
+           <p className="w-[42px] h-[16px]  text-xs leading-4 font-normal font-[Poppins] text-[#BEB7FB]">Movies</p>
+           </NavLink>
+
+           <NavLink to={'/tv shows'}>
+           <p className="w-[57px] h-[16px]  text-xs leading-4 font-normal font-[Poppins] text-[#BEB7FB]">TV Shows</p>
+           </NavLink>
+
+          </div>
+          <h3 className='line-clamp-1 text-3xl font-medium text-white font-[Poppins] my-4'>
             {movie.title}
           </h3>
         </div>
@@ -92,14 +106,14 @@ const MovieDetailPage = () => {
           className='w-[480px] h-[688px] relative top-[400px] left-[60px] space-y-[24px]'>
 
             <h3
-              className='mt-[-400px] w-[346px] h-[32px] font-[Poppins]
+              className='line-clamp-1 mt-[-400px] w-[346px] h-[32px] font-[Poppins]
                text-[24px] font-bold leading-[32px] text-[#EBEEF5]'
             >
               {movie.tagline}
             </h3>
 
             <p 
-            className='w-[480px] h-[224px] font-[Poppins] text-[20px] font-normal leading-[32px] text-[#8E95A9]'>
+            className='line-clamp-6 font-[Poppins] text-[20px] font-normal leading-[32px] text-[#8E95A9]'>
               {truncateText(movie.overview)}
             </p>
 
