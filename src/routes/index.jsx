@@ -1,9 +1,9 @@
 import Layout from "../components/layout/Layout";
 import HomePage from "../pages/home-page/HomePage";
-import Login from "../pages/login/Login";
 import MovieDetailPage from "../pages/movie-detail-page/MovieDetailPage";
 import MoviesPage from "../pages/movies-page/MoviesPage";  
 import TvShowsPage from "../pages/tv-shows-page/TvShowsPage"
+import Login from "../pages/login/Login"
 
 export const menu = [
     {
@@ -17,14 +17,14 @@ export const menu = [
             },
             {
                 path: "/movie-detail/:movieId",
-                element: <MovieDetailPage/>
+                element: <MovieDetailPage />
             },
             {
                 path: "/movies", 
                 element: <MoviesPage /> 
             },
             {
-                path: "/tv shows",
+                path: "/tv-shows",
                 element: <TvShowsPage />
             },
             {
@@ -34,3 +34,4 @@ export const menu = [
         ]
     },
 ]
+

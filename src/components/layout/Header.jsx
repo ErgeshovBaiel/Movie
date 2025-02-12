@@ -23,7 +23,7 @@ const Header = () => {
                 </NavLink>
 
                 <NavLink
-                  to='/tv shows'
+                  to='/tv-shows'
                   className='w-[80px] h-[24px] font-[Poppins] text-base font-semibold text-[#A8AEBF]'
                 >
                   TV Shows

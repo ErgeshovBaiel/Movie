@@ -73,17 +73,17 @@ const MovieDetailPage = () => {
           className='w-[560px] h-[144px] my-container m-auto relative bottom-[70px] right-[230px] 
           p-10 gap-2.5 rounded-3xl bg-[#20283E]'
         >
-          <div className="flex gap-[22px]">
+          <div className="flex gap-[30px]">
           <NavLink to={'/'}>
-          <p className="w-[85px] h-[16px] text-[#BEB7FB] font-normal text-xs leading-4 font-[Poppins]">MaileHereko</p>
-          </NavLink>
+          <p className="w-[85px] h-[16px] text-[#BEB7FB] font-normal text-[14px] leading-4 font-[Poppins]">MaileHereko </p>
+          </NavLink> 
 
            <NavLink to={'/movies'}>
-           <p className="w-[42px] h-[16px]  text-xs leading-4 font-normal font-[Poppins] text-[#BEB7FB]">Movies</p>
+           <p className="w-[42px] h-[16px]  text-[14px] leading-4 font-normal font-[Poppins] text-[#BEB7FB]">Movies</p>
            </NavLink>
 
-           <NavLink to={'/tv shows'}>
-           <p className="w-[57px] h-[16px]  text-xs leading-4 font-normal font-[Poppins] text-[#BEB7FB]">TV Shows</p>
+           <NavLink to={'/tv-shows'}>
+           <p className="w-[75px] h-[16px]  text-[14px] leading-4 font-normal font-[Poppins] text-[#BEB7FB]">TV Shows</p>
            </NavLink>
 
           </div>
